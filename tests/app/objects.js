@@ -67,7 +67,19 @@ describe('objects and context', function() {
     C.prototype.bop = 'bip';
 
     var obj = new C();
-
+    
+    objectsAnswers.iterate = function(obj) {
+    	var response = new Array();
+    	
+    	for (var property in obj) {
+    		if (obj.hasOwnProperty(property)) {
+        		response.push(property + ": " + obj[property]);
+    		}
+    	}
+    	
+    	return response;
+    };
+    
     expect(objectsAnswers.iterate(obj)).to.eql([ 'foo: bar', 'baz: bim' ]);
   });
 });
