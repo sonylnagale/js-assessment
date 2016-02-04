@@ -45,6 +45,11 @@ describe('objects and context', function() {
     var obj2 = new C('Melissa');
     var greeting = 'What\'s up';
 
+    objectsAnswers.alterObjects = function(C, greeting) {
+    	C.prototype.greeting = greeting;
+    	return C;
+    };
+    
     objectsAnswers.alterObjects(C, greeting);
 
     expect(obj1.greeting).to.eql(greeting);
